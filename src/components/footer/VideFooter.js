@@ -1,16 +1,16 @@
 import styles from './VideoFooter.module.css'
 import MusicNoteIcon from '@mui/icons-material/MusicNote';
 
-function VideoFooter() {
+function VideoFooter({name, description, music}) {
     return (
         <div className={styles.videoFooter}>
             <div className={styles.videoFooter__text}>
-                <h3>@Sandro</h3>
-                <p>Descrição do Vídeo</p>
+                <h3>@{name}</h3>
+                <p>{description}</p>
                 <div className={styles.videoFooter__music}>
                     <MusicNoteIcon />
                     <div className={styles.videoFooter__musicText}>
-                        <p>Título da música</p>
+                        <p>{music}</p>
                     </div>
                 </div>
             </div>
