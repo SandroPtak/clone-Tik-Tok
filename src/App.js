@@ -6,6 +6,11 @@ import db from './config/firebase/Firebase';
 
 function App() {
 
+  let maxHeight;
+  if(window.innerHeight <= 800){
+    maxHeight = window.innerHeight
+  }
+
   const [video, setVideos] = useState([])
 
   async function getVideos() {
@@ -20,27 +25,24 @@ function App() {
   }, [])
 
   return (
-    <>
-      {
-        video.map((item) => {
-          return (
-            <div className="App">
-              <div className='app__videos' key={item.key}>
-                <Video
-                  likes={item.likes}
-                  messages={item.messages}
-                  shares={item.shares}
-                  name={item.name}
-                  description={item.description}
-                  music={item.music}
-                  url={item.url}
-                />
-              </div>
-            </div>
-          )
-        })
-      }
-    </>
+    <div className="App" style={{ maxHeight: maxHeight + "px" }}>
+      <div className='app__videos'>
+        {video.map((item) => {
+            return (
+              <Video
+                likes={item.likes}
+                messages={item.messages}
+                shares={item.shares}
+                name={item.name}
+                description={item.description}
+                music={item.music}
+                url={item.url}
+              />
+            )
+          })
+        }
+      </div>
+    </div>
   );
 }
 
